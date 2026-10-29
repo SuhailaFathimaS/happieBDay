@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#fff1f5">
+<title>Happy Birthday, Cutie! ♡</title>
+<style>
+:root {
+  --site-primary: #e98eae;
+  --site-on-primary: #ffffff;
+  --site-secondary: #f8d7e4;
+  --site-on-secondary: #63354a;
+  --site-background: #fff7fa;
+  --site-on-background: #4c2c3a;
+  --site-font-body: 'Trebuchet MS', 'Segoe UI', sans-serif;
+  --site-font-heading: 'Palatino Linotype', 'Book Antiqua', Georgia, serif;
+  --site-decoration-opacity: 1;
+  color-scheme: light dark;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; font-family: var(--site-font-body); color: var(--site-on-background); background: var(--site-background); }
+.app { min-height: 100vh; width: 100%; overflow: hidden; position: relative; background-color: var(--site-background); background-image: radial-gradient(ellipse at 12% 12%, #ffe1eb 0, transparent 35%), radial-gradient(ellipse at 90% 34%, #f5e6ff 0, transparent 32%); }
+.login-gate { position: fixed; inset: 0; z-index: 20; display: grid; place-items: center; padding: 22px; background: radial-gradient(ellipse at 15% 15%, #ffe1eb, transparent 45%), radial-gradient(ellipse at 90% 85%, #f5e6ff, transparent 42%), #fff7fa; }
+.login-card { width: min(100%, 430px); padding: clamp(26px, 6vw, 42px); text-align: center; border: 1px solid #f3c3d5; border-radius: 30px; background: #fffafcee; box-shadow: 0 24px 80px #a65a7720; }
+.login-heart { font-size: 2.7rem; animation: bob 3s ease-in-out infinite; }
+.login-card h1 { margin: 14px 0 12px; font-size: clamp(2.3rem, 8vw, 3.5rem); }
+.login-card p { color: #835c6d; line-height: 1.7; }
+.login-card input { width: 100%; margin-top: 12px; border: 1px solid #ebc7d5; border-radius: 15px; padding: 14px 15px; background: #fff8fb; color: #583548; }
+.login-card .btn { width: 100%; margin-top: 15px; }
+.login-error { min-height: 1.4em; color: #a64268 !important; font-size: .85rem; }
+.app.locked main, .app.locked footer { visibility: hidden; }
+button, input { font: inherit; }
+button:focus-visible, input:focus-visible { outline: 3px solid #b76a8d; outline-offset: 3px; }
+.decor { position: absolute; inset: 0; pointer-events: none; opacity: var(--site-decoration-opacity); overflow: hidden; }
+.spark { position: absolute; font-size: clamp(18px, 2.4vw, 30px); animation: bob 4s ease-in-out infinite; opacity: .7; }
+.spark:nth-child(1) { top: 7%; left: 7%; }
+.spark:nth-child(2) { top: 18%; right: 8%; animation-delay: -1s; }
+.spark:nth-child(3) { top: 47%; left: 3%; animation-delay: -2s; }
+.spark:nth-child(4) { top: 65%; right: 4%; animation-delay: -1.4s; }
+.spark:nth-child(5) { top: 86%; left: 12%; animation-delay: -.6s; }
+@keyframes bob { 0%,100% { transform: translateY(0) rotate(-7deg); } 50% { transform: translateY(-14px) rotate(8deg); } }
+main { position: relative; z-index: 1; }
+.hero { max-width: 1050px; margin: auto; padding: clamp(48px, 8vw, 94px) 22px 42px; text-align: center; }
+.eyebrow { display: inline-flex; align-items: center; gap: 8px; padding: 9px 15px; border: 1px solid #f3c3d5; background: #fffafc; border-radius: 999px; color: #a64d73; font-size: .78rem; font-weight: 800; letter-spacing: .13em; text-transform: uppercase; box-shadow: 0 8px 24px #a84d7310; }
+h1 { margin: 24px 0 14px; font: 700 clamp(3rem, 8.5vw, 6.4rem)/.99 var(--site-font-heading); letter-spacing: -.055em; color: #8c4565; }
+h1 span { color: #e58aaa; font-style: italic; }
+.hero p { max-width: 600px; margin: 0 auto; color: #835c6d; font-size: clamp(1rem, 2vw, 1.2rem); line-height: 1.75; }
+.hero-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 26px; }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 47px; padding: 13px 20px; border: 0; border-radius: 999px; cursor: pointer; text-decoration: none; font-weight: 800; transition: transform .2s, box-shadow .2s; }
+.btn:hover { transform: translateY(-3px); }
+.btn-primary { background: var(--site-primary); color: var(--site-on-primary); box-shadow: 0 9px 22px #d97a9d40; }
+.section { max-width: 1120px; margin: 0 auto; padding: 28px 22px 70px; }
+.section-heading { text-align: center; margin-bottom: 28px; }
+.kicker { color: #c16d8e; text-transform: uppercase; letter-spacing: .18em; font-size: .72rem; font-weight: 900; }
+h2 { margin: 9px 0 8px; color: #85425f; font: 700 clamp(2rem, 4.5vw, 3.25rem)/1.08 var(--site-font-heading); letter-spacing: -.035em; }
+.section-heading p { color: #956f7e; line-height: 1.65; margin: 0 auto; max-width: 580px; }
+.gallery { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 15px; margin-top: 30px; }
+.photo { position: relative; min-width: 0; aspect-ratio: 4 / 5; border: 7px solid #fff; border-bottom-width: 24px; border-radius: 5px; background: linear-gradient(145deg, var(--c1), var(--c2)); box-shadow: 0 8px 20px #7b40551b; transform: rotate(var(--tilt)); animation: floatPhoto 5s ease-in-out infinite; animation-delay: var(--delay); transition: transform .25s, box-shadow .25s; overflow: hidden; }
+.photo:hover { z-index: 3; transform: rotate(0deg) scale(1.08) translateY(-5px); box-shadow: 0 16px 30px #7b40552a; }
+.photo::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, #ffffff30, transparent 45%, #7e365013); z-index: 1; pointer-events: none; }
+.photo .emoji { position: absolute; inset: 0; display: grid; place-items: center; font-size: clamp(28px, 4vw, 50px); filter: drop-shadow(0 5px 4px #6c31511a); }
+.photo .photo-caption { position: absolute; left: 2px; right: 2px; bottom: -20px; text-align: center; font: italic 11px var(--site-font-heading); color: #8d536a; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; z-index: 2; }
+.photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+@keyframes floatPhoto { 0%,100% { translate: 0 0; } 50% { translate: 0 -6px; } }
+.memory-card { margin: 48px auto 0; max-width: 760px; padding: clamp(24px, 5vw, 42px); text-align: center; border: 1px solid #f4d4df; border-radius: 26px; background: #fffafcdd; box-shadow: 0 18px 60px #a65a7710; }
+.memory-card .big-heart { font-size: 2rem; }
+.memory-card p { margin: 10px auto 0; max-width: 580px; color: #8b6273; line-height: 1.8; }
+footer { position: relative; text-align: center; padding: 24px 18px 34px; color: #a17d8c; font-size: .82rem; }
+footer span { color: #d67d9e; }
+@media (max-width: 900px) { .gallery { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 13px; } }
+@media (max-width: 560px) { .hero { padding-top: 55px; } .gallery { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; } .photo { border-width: 5px; border-bottom-width: 20px; } .photo .photo-caption { bottom: -17px; font-size: 9px; } .section { padding-left: 16px; padding-right: 16px; } }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; } }
+@media (prefers-color-scheme: dark) {
+  body { color: light-dark(#4c2c3a, #f7e8ef); }
+  .app { background-color: light-dark(#fff7fa, #241a22); background-image: radial-gradient(ellipse at 12% 12%, light-dark(#ffe1eb, #4a2839) 0, transparent 35%), radial-gradient(ellipse at 90% 34%, light-dark(#f5e6ff, #30233c) 0, transparent 32%); }
+  .hero p, .section-heading p, .memory-card p { color: light-dark(#835c6d, #d6b6c5); }
+  h1, h2 { color: light-dark(#8c4565, #f0b4cc); }
+  .eyebrow { background: light-dark(#fffafc, #34232d); color: light-dark(#a64d73, #f0b4cc); }
+  .memory-card { background: light-dark(#fffafcdd, #30212a); border-color: light-dark(#f4d4df, #634052); }
+  .photo .photo-caption { color: light-dark(#8d536a, #f5d4e2); }
+}
+</style>
+</head>
+<body>
+<div class="app" id="app">
+  <div class="decor" aria-hidden="true"><span class="spark">♡</span><span class="spark">✦</span><span class="spark">୨୧</span><span class="spark">♡</span><span class="spark">✧</span></div>
+  <main>
+    <header class="hero">
+      <div class="eyebrow">✿ a little birthday magic ✿</div>
+      <h1>Happy Birthday,<br><span>cutie pie!</span> 🎂</h1>
+      <p>Today is all about you — your laugh, your lovely chaos, and all the tiny moments that make you <em>you</em>. Here's a little corner of the internet made with extra love. ♡</p>
+      <div class="hero-actions"><a class="btn btn-primary" href="#memories">Open your memories ✨</a></div>
+    </header>
+
+    <section class="section" id="memories">
+      <div class="section-heading"><div class="kicker">little moments, big love</div><h2>Our tiny memory gallery ♡</h2><p>Twenty-four little frames for twenty-four (or a million) reasons you're special.</p></div>
+      <div class="gallery" id="gallery" aria-label="Animated birthday photo gallery"></div>
+      <div class="memory-card"><div class="big-heart">💗 🌷 💗</div><h2>One more trip around the sun!</h2><p>I hope this year gives you soft mornings, belly laughs, unexpected adventures, people who show up for you, and all the love your heart can hold. Never forget how wonderfully you brighten the world.</p></div>
+    </section>
+  </main>
+  <footer>made with <span>♥</span>, a sprinkle of glitter, and best-friend energy</footer>
+</div>
+<section class="login-gate" id="loginGate" aria-label="Birthday website welcome">
+  <form class="login-card" id="loginForm">
+    <div class="login-heart" aria-hidden="true">🎀 ♡ 🎀</div>
+    <div class="eyebrow">a tiny surprise for you</div>
+    <h1>Hey, <span>cutie!</span></h1>
+    <p>This little corner is waiting just for you. Enter the secret word to open your birthday surprise. 💗</p>
+    <label class="field-label" for="pagePassword" style="display:block;text-align:left;margin-top:18px;font-weight:800;">Our secret word</label>
+    <input id="pagePassword" type="password" autocomplete="current-password" placeholder="A little secret…" required>
+    <button class="btn btn-primary" type="submit">Let me in ♡</button>
+    <p class="login-error" id="loginError" role="status" aria-live="polite"></p>
+  </form>
+</section>
+<script>
+(() => {
+  // Simple visual gate only: this value is visible in the page source and is not secure authentication.
+  const PAGE_PASSWORD = 'abhiii';
+
+  // ─────────────────────────────────────────────────────────────
+  // YOUR PHOTOS — add one line per photo (up to 24).
+  // In Google Drive: right-click the photo → Share → set "Anyone with the link"
+  // → Copy link → paste it below. The caption is optional.
+  // ─────────────────────────────────────────────────────────────
+  const PHOTOS = [
+    { link: 'https://drive.google.com/file/d/1yhYHiJebAJsA5KWMLxzE5OJekVvTjq5i/view?usp=sharing', caption: '1' },
+    { link: 'https://drive.google.com/file/d/1Z4lxHoUdhrJTezBfSLp_dwUG9UL3KwS7/view?usp=sharing', caption: '2' },
+    { link: 'https://drive.google.com/file/d/1Q-YSAGW4CT7vFhUQUPPKgaqPleyuU3Qc/view?usp=sharing', caption: '3' },
+    { link: 'https://drive.google.com/file/d/1Bzdh1-BYWpchsFihW28zKRLl3fxtZ1zv/view?usp=drive_link', caption: '4' },
+    { link: 'https://drive.google.com/file/d/1MijaTg7K0UCAdTdglbrtUMWeH3fcbUOd/view?usp=drive_link', caption: '5' },
+    { link: 'https://drive.google.com/file/d/1vhkHD-G9_pZxSSf3L4Yko7hGxqr0EVgO/view?usp=drive_link', caption: '6' },
+    { link: 'https://drive.google.com/file/d/1W0Oh4_2NZOWhos-F8V01rhEYjIwiZgC3/view?usp=drive_link', caption: '7' },
+    { link: 'https://drive.google.com/file/d/1lQQf0oez8n2Pxn2m9sGMVLVmZLQ8sPhO/view?usp=drive_link', caption: '8' },
+    { link: 'https://drive.google.com/file/d/1pbghNOfqT4qXzJVAF6Pf8RBnc4XW45o6/view?usp=drive_link', caption: '9' },
+    { link: 'https://drive.google.com/file/d/1yhYHiJebAJsA5KWMLxzE5OJekVvTjq5i/view?usp=sharing', caption: '1' },
+    { link: 'https://drive.google.com/file/d/1Z4lxHoUdhrJTezBfSLp_dwUG9UL3KwS7/view?usp=sharing', caption: '2' },
+    { link: 'https://drive.google.com/file/d/1Q-YSAGW4CT7vFhUQUPPKgaqPleyuU3Qc/view?usp=sharing', caption: '3' },
+    { link: 'https://drive.google.com/file/d/1Bzdh1-BYWpchsFihW28zKRLl3fxtZ1zv/view?usp=drive_link', caption: '4' },
+    { link: 'https://drive.google.com/file/d/1MijaTg7K0UCAdTdglbrtUMWeH3fcbUOd/view?usp=drive_link', caption: '5' },
+    { link: 'https://drive.google.com/file/d/1vhkHD-G9_pZxSSf3L4Yko7hGxqr0EVgO/view?usp=drive_link', caption: '6' },
+    { link: 'https://drive.google.com/file/d/1W0Oh4_2NZOWhos-F8V01rhEYjIwiZgC3/view?usp=drive_link', caption: '7' },
+    { link: 'https://drive.google.com/file/d/1lQQf0oez8n2Pxn2m9sGMVLVmZLQ8sPhO/view?usp=drive_link', caption: '8' },
+    { link: 'https://drive.google.com/file/d/1pbghNOfqT4qXzJVAF6Pf8RBnc4XW45o6/view?usp=drive_link', caption: '9' },
+    { link: 'https://drive.google.com/file/d/1yhYHiJebAJsA5KWMLxzE5OJekVvTjq5i/view?usp=sharing', caption: '1' },
+    { link: 'https://drive.google.com/file/d/1Z4lxHoUdhrJTezBfSLp_dwUG9UL3KwS7/view?usp=sharing', caption: '2' },
+    { link: 'https://drive.google.com/file/d/1Q-YSAGW4CT7vFhUQUPPKgaqPleyuU3Qc/view?usp=sharing', caption: '3' },
+    { link: 'https://drive.google.com/file/d/1Bzdh1-BYWpchsFihW28zKRLl3fxtZ1zv/view?usp=drive_link', caption: '4' },
+    { link: 'https://drive.google.com/file/d/1MijaTg7K0UCAdTdglbrtUMWeH3fcbUOd/view?usp=drive_link', caption: '5' },
+    { link: 'https://drive.google.com/file/d/1vhkHD-G9_pZxSSf3L4Yko7hGxqr0EVgO/view?usp=drive_link', caption: '6' },
+  ];
+
+  const app = document.getElementById('app');
+  const loginGate = document.getElementById('loginGate');
+  const loginForm = document.getElementById('loginForm');
+  const loginError = document.getElementById('loginError');
+  app.classList.add('locked');
+  loginForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    if (document.getElementById('pagePassword').value === PAGE_PASSWORD) {
+      app.classList.remove('locked');
+      loginGate.remove();
+      try { sessionStorage.setItem('birthdayCutieUnlocked', 'yes'); } catch (_) {}
+    } else {
+      loginError.textContent = 'Oopsie, that is not the secret word. Try again ♡';
+    }
+  });
+  try {
+    if (sessionStorage.getItem('birthdayCutieUnlocked') === 'yes') {
+      app.classList.remove('locked');
+      loginGate.remove();
+    }
+  } catch (_) {}
+
+  const gallery = document.getElementById('gallery');
+  const emojis = ['🌷','🎀','🧸','🦋','🍓','💌','🌸','🩰','🍒','🪷','🐻','✨','🧁','💗','🌼','🐰','🫧','🎂','🍰','💐','⭐','🩷','🌙','🪻'];
+  const colors = [['#f9d5e3','#fce9ee'],['#f7d9cb','#fff0dc'],['#e8dff9','#f7e9ff'],['#d6ece5','#eff9f4'],['#f8e5a9','#fff3d6'],['#f3c5d4','#fceaf1']];
+  const fallbackCaptions = ['bestie moments','so much love','little sunshine','forever us'];
+
+  // Turns a Drive share link (or a bare file ID) into a displayable image URL
+  function driveImageUrl(link) {
+    const text = String(link || '');
+    const match = text.match(/\/d\/([-\w]{15,})/) || text.match(/[?&]id=([-\w]{15,})/) || text.match(/^([-\w]{15,})$/);
+    return match ? `https://drive.google.com/thumbnail?id=${match[1]}&sz=w800` : '';
+  }
+
+  function addEmoji(frame, i) {
+    const emoji = document.createElement('span');
+    emoji.className = 'emoji';
+    emoji.textContent = emojis[i % emojis.length];
+    frame.insertBefore(emoji, frame.firstChild);
+  }
+
+  function makeFrame(i, photo) {
+    const frame = document.createElement('div');
+    frame.className = 'photo';
+    frame.style.setProperty('--tilt', `${[-4,3,-2,4,1,-3][i % 6]}deg`);
+    frame.style.setProperty('--delay', `${(i % 8) * -0.42}s`);
+    frame.style.setProperty('--c1', colors[i % colors.length][0]);
+    frame.style.setProperty('--c2', colors[i % colors.length][1]);
+    const src = photo ? driveImageUrl(photo.link) : '';
+    if (src) {
+      const img = document.createElement('img');
+      img.referrerPolicy = 'no-referrer';
+      img.loading = 'lazy';
+      img.alt = photo.caption || `Birthday memory ${i + 1}`;
+      img.onerror = () => { img.remove(); addEmoji(frame, i); };
+      img.src = src;
+      frame.appendChild(img);
+    } else {
+      addEmoji(frame, i);
+    }
+    const caption = document.createElement('span');
+    caption.className = 'photo-caption';
+    caption.textContent = (photo && photo.caption) || fallbackCaptions[i % 4];
+    frame.appendChild(caption);
+    return frame;
+  }
+
+  for (let i = 0; i < 24; i++) gallery.appendChild(makeFrame(i, PHOTOS[i] || null));
+})();
+</script>
+</body>
+</html>
